@@ -12,7 +12,7 @@ import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
 
-
+    public enum Country{ INDIA, US; }
     private List<CensusDTO> censusList;
     private Map<String, CensusDTO> censusMap;
 
@@ -21,15 +21,10 @@ public class CensusAnalyser {
         censusMap = new HashMap<>();
     }
 
-    public int loadIndiaCensusData(String... csvFilePath) {
-        censusMap = new CensusLoader().loadCensusData(IndiaCensusCSV.class, csvFilePath);
-        return censusMap.size();
-    }
-
-    public int loadUSCensusData(String... csvFilePath) {
-        censusMap = new CensusLoader().loadCensusData(USCensusCSV.class, csvFilePath);
-        return censusMap.size();
-    }
+       public int loadCensusData(Country country, String... csvFilePath){
+            censusMap = new CensusLoader().loadCensusData(country, csvFilePath);
+            return censusMap.size();
+       }
 
     public String getStateWiseSortedCensusData() {
         censusList = censusMap.values().stream().collect(Collectors.toList());
