@@ -2,7 +2,7 @@ package censusanalyser;
 
 import java.util.Map;
 
-public class USCensusAdapter extends CensusAdapter{
+public class USCensusAdapter extends CensusAdapter {
 
     public Map<String, CensusDTO> censusMap;
 

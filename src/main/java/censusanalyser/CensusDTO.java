@@ -11,13 +11,13 @@ public class CensusDTO {
     public CensusDTO(IndiaCensusCSV censusCSV) {
         this.state = censusCSV.state;
         this.population = censusCSV.population;
-        this.totalArea = censusCSV.areaInSqKm;
-        this.populationDensity = censusCSV.densityPerSqKm;
+        this.totalArea = censusCSV.totalArea;
+        this.populationDensity = censusCSV.populationDensity;
     }
 
     public CensusDTO(USCensusCSV censusCSV) {
         state = censusCSV.state;
-        stateCode = censusCSV.stateId;
+        stateCode = censusCSV.stateCode;
         population = censusCSV.population;
         totalArea = censusCSV.totalArea;
         populationDensity = censusCSV.populationDensity;
