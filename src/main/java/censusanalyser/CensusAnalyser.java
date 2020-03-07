@@ -21,8 +21,8 @@ public class CensusAnalyser {
         censusMap = new HashMap<>();
     }
 
-       public int loadCensusData(Country country, String... csvFilePath){
-            censusMap = new CensusLoader().loadCensusData(country, csvFilePath);
+       public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException{
+            censusMap = CensusAdapterFactory.getCensusAdapter(country, csvFilePath);
             return censusMap.size();
        }
 
@@ -32,7 +32,7 @@ public class CensusAnalyser {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
         Comparator<CensusDTO> censusCSVComparator = Comparator.comparing(census -> census.state);
-        sort(censusCSVComparator);
+        this.sort(censusCSVComparator);
         String sortedStateCensus = new Gson().toJson(censusList);
         return sortedStateCensus;
     }
